@@ -21,6 +21,12 @@ if [ -z "${DEPLOY_ONLY}" ]; then
     DEPLOY_ONLY = "functions"
 fi
 
+echo "Running npm install"
+
+npm install
+
+echo "Activating firebase project target"
 firebase use ${TARGET}
 
+echo "Running deploy"
 firebase deploy --token ${FIREBASE_TOKEN} --only ${DEPLOY_ONLY}
